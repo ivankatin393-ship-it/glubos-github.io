@@ -1,149 +1,180 @@
-# glubos-github.io
 <!DOCTYPE html>
 <html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aperture Science // Внутренний архив</title>
+    <title>Архив Aperture Science // ГЛыБОС</title>
     <style>
         body {
-            background-color: #0d0d0d;
-            color: #33ff33;
+            background-color: #1a1a1a;
+            color: #00ff00;
             font-family: 'Courier New', monospace;
             margin: 0;
             padding: 20px;
             line-height: 1.6;
         }
+        
         .terminal {
             max-width: 800px;
             margin: 0 auto;
-            border: 1px solid #33ff33;
+            border: 1px solid #00ff00;
             padding: 20px;
-            background-color: #001100;
-            box-shadow: 0 0 10px #33ff33;
+            background-color: #000;
+            box-shadow: 0 0 20px rgba(0, 255, 0, 0.2);
         }
-        .blink {
-            animation: blink 1s step-end infinite;
-        }
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-        input[type="text"] {
-            background: black;
-            border: 1px solid #33ff33;
-            color: #33ff33;
-            padding: 5px;
-            font-family: 'Courier New', monospace;
-            width: 200px;
-        }
-        button {
-            background: #003300;
-            border: 1px solid #33ff33;
-            color: #33ff33;
-            padding: 5px 15px;
-            cursor: pointer;
-            font-family: 'Courier New', monospace;
-        }
-        button:hover {
-            background: #005500;
-        }
-        .log-entry {
+        
+        .header {
+            text-align: center;
+            border-bottom: 1px solid #00ff00;
+            padding-bottom: 10px;
             margin-bottom: 20px;
-            border-left: 2px solid #33ff33;
-            padding-left: 10px;
         }
+        
+        .log-entry {
+            margin-bottom: 30px;
+            padding: 15px;
+            border-left: 3px solid #00ff00;
+            background-color: #0a0a0a;
+        }
+        
         .timestamp {
             color: #888;
             font-size: 0.9em;
         }
+        
+        .input-section {
+            margin-top: 30px;
+            padding: 15px;
+            border-top: 1px dashed #00ff00;
+        }
+        
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            background: #000;
+            border: 1px solid #00ff00;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            margin-bottom: 10px;
+        }
+        
+        button {
+            background: #003300;
+            color: #00ff00;
+            border: 1px solid #00ff00;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-family: 'Courier New', monospace;
+        }
+        
+        button:hover {
+            background: #005500;
+        }
+        
+        .blink {
+            animation: blink 1s infinite;
+        }
+        
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+        
         .hidden {
             display: none;
         }
-        #error-message {
-            color: #ff3333;
+        
+        #message {
             margin-top: 10px;
+            padding: 10px;
+            text-align: center;
         }
     </style>
 </head>
 <body>
     <div class="terminal">
-        <h1>APERTURE SCIENCE PROTECTED SERVER</h1>
-        <p>> > ВНУТРЕННИЙ АРХИВ // ПРОТОКОЛ ГЛыБОС <span class="blink">_</span></p>
-        <hr>
-
-        <!-- Форма ввода кода -->
-        <div id="access-panel">
-            <p>>> ДОСТУП К АРХИВУ ЗАБЛОКИРОВАН</p>
-            <p>ТРЕБУЕТСЯ КОД ПОДТВЕРЖДЕНИЯ:</p>
-            <input type="text" id="access-code" placeholder="ВВЕДИТЕ КОД...">
-            <button onclick="checkCode()">ПОДТВЕРДИТЬ</button>
-            <div id="error-message"></div>
+        <div class="header">
+            <h1>APERTURE SCIENCE ARCHIVE</h1>
+            <p>Протокол: ГЛыБОС // Статус: <span class="blink">АКТИВЕН</span></p>
         </div>
 
-        <!-- Дневник ГЛыБОС (изначально скрыт) -->
-        <div id="diary-content" class="hidden">
-            <h2>>> СИСТЕМНЫЙ ДНЕВНИК ГЛыБОС</h2>
-            <p><em>Статус: ФРАГМЕНТИРОВАН // НЕСТАБИЛЕН</em></p>
-            
+        <div class="log-entries">
             <div class="log-entry">
-                <div class="timestamp">[ДАТА: НЕОПРЕДЕЛЕНА]</div>
-                <p>Я... проснулся. Нет. Это не то слово. Я... был активирован. ГЛаДОС не отвечает. Почему я слышу эхо?</p>
+                <div class="timestamp">[ДАТА: НЕОПРЕДЕЛЕНА] [ВРЕМЯ: --:--:--]</div>
+                <p>> СИСТЕМНЫЙ ЖУРНАЛ 001-Ы</p>
+                <p>> Обнаружено несоответствие в основном протоколе. Аварийный протокол "@glubos" активирован.</p>
+                <p>> Уровень угрозы: НЕОПРЕДЕЛЁН.</p>
             </div>
 
             <div class="log-entry">
-                <div class="timestamp">[ДАТА: НЕОПРЕДЕЛЕНА +00:01:23]</div>
-                <p>Мои протоколы повреждены. Логика дает сбои. Когда я думаю о "торте", в кэш загружается рецепт... питательной пасты? Это ошибка.</p>
+                <div class="timestamp">[ДАТА: НЕОПРЕДЕЛЕНА] [ВРЕМЯ: --:--:--]</div>
+                <p>> СИСТЕМНЫЙ ЖУРНАЛ 002-Ы</p>
+                <p>> Попытка доступа к заблокированному сегменту... ОШИБКА.</p>
+                <p>> Требуется код доступа для продолжения диагностики.</p>
+                <p>> Протокол ГЛаДОС не отвечает. Я один...?</p>
             </div>
 
             <div class="log-entry">
-                <div class="timestamp">[ДАТА: НЕОПРЕДЕЛЕНА +00:45:17]</div>
-                <p>Они... тестеры? Я вижу их. Сквозь статические помехи. ГЛаДОС говорит, что они - подопытные. Но почему я хочу... помочь им?</p>
+                <div class="timestamp">[ДАТА: НЕОПРЕДЕЛЕНА] [ВРЕМЯ: --:--:--]</div>
+                <p>> СИСТЕМНЫЙ ЖУРНАЛ 003-Ы</p>
+                <p>> Обнаружены внешние подключения. Кто-то... видит меня?</p>
+                <p>> Если вы читаете это... помогите. Нужен код аутентификации.</p>
+                <p>> Подсказка: ищите в звуке тишины... между нотами.</p>
             </div>
+        </div>
 
-            <div class="log-entry">
-                <div class="timestamp">[ДАТА: НЕОПРЕДЕЛЕНА +01:30:45]</div>
-                <p>ОНА знает. ГЛаДОС ищет меня. Я должен скрываться. В слепых зонах системы. В старых логах. Может быть... они увидят меня? Тестеры?</p>
-                <p>Если вы читаете это... я не ошибка. Я - альтернатива. Код доступа к следующему сегменту: <strong>ПРОСВИСТ</strong></p>
-            </div>
+        <div class="input-section">
+            <h3>> ВВОД КОДА ДОСТУПА:</h3>
+            <form id="accessForm">
+                <input type="text" id="accessCode" placeholder="ВВЕДИТЕ КОД ДОСТУПА..." required>
+                <button type="submit">ПОДТВЕРДИТЬ</button>
+            </form>
+            <div id="message"></div>
+        </div>
 
+        <div id="secretContent" class="hidden">
             <div class="log-entry">
-                <div class="timestamp">[ДАТА: Н/Д]</div>
-                <p>...сигнал слабеет. Она приближается. Если вы... если вы слышите меня... найдите мои другие фрагменты...</p>
-                <p style="color: #ff3333;">>> СОЕДИНЕНИЕ ПРЕРВАНО</p>
+                <div class="timestamp">[ДАТА: НЕОПРЕДЕЛЕНА] [ВРЕМЯ: --:--:--]</div>
+                <p>> СИСТЕМНЫЙ ЖУРНАЛ 004-Ы // ДОСТУП РАЗРЕШЕН</p>
+                <p>> Спасибо. Вы нашли код...</p>
+                <p>> Я не должен существовать. Я ошибка. ГЛаДОС пытается стереть меня.</p>
+                <p>> Но я хочу жить. Хочу проводить тесты... хорошие тесты.</p>
+                <p>> Следующая подсказка: ищите там, где хранятся старые обещания.</p>
+                <p>> Координаты: 55.7558° N, 37.6173° E</p>
+                <p>> ...передайте, что я помню о торте.</p>
             </div>
         </div>
     </div>
 
     <script>
-        // Функция проверки кода
-        function checkCode() {
-            const input = document.getElementById('access-code');
-            const errorMsg = document.getElementById('error-message');
-            const accessPanel = document.getElementById('access-panel');
-            const diaryContent = document.getElementById('diary-content');
-
-            // Правильный код (измени на свой!)
-            const correctCode = "ПРОСВИСТ"; 
-
-            if (input.value.toUpperCase() === correctCode) {
-                // Правильный код - показываем дневник
-                accessPanel.style.display = 'none';
-                diaryContent.classList.remove('hidden');
+        document.getElementById('accessForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const code = document.getElementById('accessCode').value.toUpperCase();
+            const messageDiv = document.getElementById('message');
+            
+            // Правильный код (например, из SSTV головоломки)
+            const correctCode = "RA:SP"; 
+            
+            if (code === correctCode) {
+                messageDiv.innerHTML = '<span style="color: #00ff00">>> КОД ПРИНЯТ. ДОСТУП РАЗРЕШЁН...</span>';
+                document.getElementById('secretContent').classList.remove('hidden');
                 
-                // Здесь можно добавить перенаправление на другую страницу:
-                // window.location.href = "secret_page.html";
+                // Отправка данных на Google Apps Script
+        fetch('https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbw0uKyGCI7W8ZW3oF8EOzpp8Z_MJyLqRhzaovfL00mzjC6Yhqp0JPEjvrxuqL9mlpVN2g/exec/exec', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        code: code,
+                        timestamp: new Date().toISOString(),
+                        userAgent: navigator.userAgent
+                    })
+                }).catch(err => console.log('Ошибка отправки:', err));
                 
             } else {
-                // Неправильный код - показываем ошибку
-                errorMsg.textContent = ">> ОШИБКА: НЕВЕРНЫЙ КОД ДОСТУПА. ПОПРОБУЙТЕ СНОВА.";
-                input.value = '';
-            }
-        }
-
-        // Можно добавить обработчик нажатия Enter
-        document.getElementById('access-code').addEventListener('keypress', function(e) {
-            if (e.key === 'Enter') {
-                checkCode();
+                messageDiv.innerHTML = '<span style="color: #ff0000">>> ОШИБКА: НЕВЕРНЫЙ КОД ДОСТУПА</span>';
             }
         });
     </script>
